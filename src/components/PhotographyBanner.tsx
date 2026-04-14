@@ -1,10 +1,74 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 
+interface PricingPlan {
+  name: string
+  price: string
+  desc: string
+}
+
+interface OrderForm {
+  name: string
+  phone: string
+  email: string
+}
+
+interface JoinForm {
+  name: string
+  phone: string
+  email: string
+  role: string
+  message: string
+}
+
 const PhotographyBanner: React.FC = () => {
   const [currentText, setCurrentText] = useState("")
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+
+  // Модалка тарифа
+  const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null)
+  const [orderForm, setOrderForm] = useState<OrderForm>({ name: "", phone: "", email: "" })
+  const [orderSent, setOrderSent] = useState(false)
+  const [orderLoading, setOrderLoading] = useState(false)
+
+  // Модалка команды
+  const [joinOpen, setJoinOpen] = useState(false)
+  const [joinForm, setJoinForm] = useState<JoinForm>({ name: "", phone: "", email: "", role: "", message: "" })
+  const [joinSent, setJoinSent] = useState(false)
+  const [joinLoading, setJoinLoading] = useState(false)
+
+  const openPlan = (plan: PricingPlan) => {
+    setSelectedPlan(plan)
+    setOrderForm({ name: "", phone: "", email: "" })
+    setOrderSent(false)
+  }
+
+  const closePlan = () => setSelectedPlan(null)
+
+  const openJoin = (role = "") => {
+    setJoinOpen(true)
+    setJoinForm({ name: "", phone: "", email: "", role, message: "" })
+    setJoinSent(false)
+  }
+
+  const closeJoin = () => setJoinOpen(false)
+
+  const handleOrderSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setOrderLoading(true)
+    await new Promise(r => setTimeout(r, 900))
+    setOrderLoading(false)
+    setOrderSent(true)
+  }
+
+  const handleJoinSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setJoinLoading(true)
+    await new Promise(r => setTimeout(r, 900))
+    setJoinLoading(false)
+    setJoinSent(true)
+  }
 
   const texts = ["РЕКЛАМУ.", "САЙТЫ.", "СЕРВЕРЫ.", "РЕШЕНИЯ."]
 
@@ -1183,6 +1247,202 @@ const PhotographyBanner: React.FC = () => {
             padding: 70px 16px;
           }
         }
+
+        /* ===== МОДАЛКИ ===== */
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.75);
+          backdrop-filter: blur(6px);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        .modal-box {
+          background: #073642;
+          border: 1px solid #d33682;
+          border-radius: 24px;
+          padding: 50px 45px;
+          max-width: 480px;
+          width: 100%;
+          position: relative;
+          animation: slideUp2 0.3s ease;
+        }
+
+        @keyframes slideUp2 {
+          from { transform: translateY(30px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+          position: absolute;
+          top: 18px;
+          right: 22px;
+          background: none;
+          border: none;
+          color: #aaa;
+          font-size: 26px;
+          cursor: pointer;
+          line-height: 1;
+          transition: color 0.2s;
+        }
+
+        .modal-close:hover { color: #fff; }
+
+        .modal-badge {
+          display: inline-block;
+          padding: 5px 14px;
+          background: rgba(211,54,130,0.15);
+          color: #d33682;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          border-radius: 20px;
+          margin-bottom: 14px;
+        }
+
+        .modal-title {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 28px;
+          text-transform: uppercase;
+          margin: 0 0 6px;
+        }
+
+        .modal-price {
+          color: #d33682;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 36px;
+          margin: 0 0 20px;
+        }
+
+        .modal-price span {
+          font-size: 16px;
+          font-weight: 400;
+          color: #aaa;
+        }
+
+        .modal-desc {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.7;
+          margin: 0 0 30px;
+        }
+
+        .modal-form {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .modal-input, .modal-select, .modal-textarea {
+          background: rgba(255,255,255,0.06);
+          border: 1px solid #444;
+          border-radius: 12px;
+          padding: 14px 18px;
+          color: #fff;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          outline: none;
+          transition: border-color 0.2s;
+          width: 100%;
+        }
+
+        .modal-input::placeholder, .modal-textarea::placeholder { color: #666; }
+
+        .modal-input:focus, .modal-select:focus, .modal-textarea:focus {
+          border-color: #d33682;
+        }
+
+        .modal-select {
+          appearance: none;
+          cursor: pointer;
+        }
+
+        .modal-select option {
+          background: #073642;
+          color: #fff;
+        }
+
+        .modal-textarea {
+          resize: vertical;
+          min-height: 90px;
+        }
+
+        .modal-submit {
+          padding: 16px;
+          background: #d33682;
+          color: #002b36;
+          border: none;
+          border-radius: 50px;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin-top: 6px;
+        }
+
+        .modal-submit:hover:not(:disabled) {
+          background: transparent;
+          color: #d33682;
+          border: 2px solid #d33682;
+          padding: 14px;
+        }
+
+        .modal-submit:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+
+        .modal-success {
+          text-align: center;
+          padding: 20px 0;
+        }
+
+        .modal-success .success-icon {
+          font-size: 56px;
+          margin-bottom: 20px;
+          display: block;
+        }
+
+        .modal-success h3 {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 22px;
+          margin: 0 0 12px;
+          text-transform: uppercase;
+        }
+
+        .modal-success p {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          line-height: 1.7;
+          margin: 0;
+        }
+
+        @media screen and (max-width: 500px) {
+          .modal-box { padding: 35px 22px; }
+          .modal-title { font-size: 22px; }
+        }
       `}</style>
 
       <div className="photography-banner">
@@ -1394,7 +1654,7 @@ const PhotographyBanner: React.FC = () => {
                   <li className="disabled">Приоритетная поддержка</li>
                   <li className="disabled">Аналитика и отчёты</li>
                 </ul>
-                <a href="#" className="pricing-btn">Выбрать план</a>
+                <button className="pricing-btn" onClick={() => openPlan({ name: "Новичок", price: "9 900 ₽/мес", desc: "Идеально для старта — лендинг, реклама, хостинг и домен." })}>Выбрать план</button>
               </div>
 
               <div className="pricing-card popular">
@@ -1411,7 +1671,7 @@ const PhotographyBanner: React.FC = () => {
                   <li>Ежемесячный отчёт по рекламе</li>
                   <li className="disabled">Выделенный менеджер</li>
                 </ul>
-                <a href="#" className="pricing-btn">Выбрать план</a>
+                <button className="pricing-btn" onClick={() => openPlan({ name: "Бизнес", price: "24 900 ₽/мес", desc: "Полный digital-пакет: сайт, реклама, VPS-сервер и поддержка 5 дней в неделю." })}>Выбрать план</button>
               </div>
 
               <div className="pricing-card">
@@ -1427,7 +1687,7 @@ const PhotographyBanner: React.FC = () => {
                   <li>Детальная аналитика и A/B тесты</li>
                   <li>Личный менеджер проекта</li>
                 </ul>
-                <a href="#" className="pricing-btn">Выбрать план</a>
+                <button className="pricing-btn" onClick={() => openPlan({ name: "Профи", price: "59 900 ₽/мес", desc: "Максимальный уровень: выделенный сервер, все площадки рекламы и личный менеджер." })}>Выбрать план</button>
               </div>
             </div>
           </section>
@@ -1444,25 +1704,25 @@ const PhotographyBanner: React.FC = () => {
                   <li><span className="perk-icon">🚀</span>Реальный карьерный рост внутри компании</li>
                   <li><span className="perk-icon">🎓</span>Обучение за счёт компании</li>
                 </ul>
-                <a href="#" className="join-btn">Откликнуться на вакансию</a>
+                <button className="join-btn" onClick={() => openJoin("")}>Откликнуться на вакансию</button>
               </div>
               <div className="join-roles">
-                <div className="role-card">
+                <div className="role-card" style={{cursor:"pointer"}} onClick={() => openJoin("Веб-разработчик")}>
                   <h4>Веб-разработчик</h4>
                   <p>Создаёшь сайты и веб-приложения. React, Vue или чистый HTML — нам важен результат.</p>
                   <span className="role-tag">Удалённо</span>
                 </div>
-                <div className="role-card">
+                <div className="role-card" style={{cursor:"pointer"}} onClick={() => openJoin("Специалист по рекламе")}>
                   <h4>Специалист по рекламе</h4>
                   <p>Настраиваешь кампании в Яндекс Директ и ВКонтакте, умеешь работать с аналитикой.</p>
                   <span className="role-tag">Удалённо</span>
                 </div>
-                <div className="role-card">
+                <div className="role-card" style={{cursor:"pointer"}} onClick={() => openJoin("DevOps / Системный администратор")}>
                   <h4>DevOps / Системный администратор</h4>
                   <p>Поднимаешь серверы, настраиваешь CI/CD, следишь за стабильностью инфраструктуры.</p>
                   <span className="role-tag">Полная занятость</span>
                 </div>
-                <div className="role-card">
+                <div className="role-card" style={{cursor:"pointer"}} onClick={() => openJoin("Менеджер по продажам")}>
                   <h4>Менеджер по продажам</h4>
                   <p>Работаешь с входящими заявками, ведёшь клиентов и заключаешь сделки.</p>
                   <span className="role-tag">Удалённо</span>
@@ -1489,6 +1749,127 @@ const PhotographyBanner: React.FC = () => {
           </section>
         </main>
       </div>
+
+      {/* МОДАЛКА ТАРИФА */}
+      {selectedPlan && (
+        <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && closePlan()}>
+          <div className="modal-box">
+            <button className="modal-close" onClick={closePlan}>×</button>
+            {!orderSent ? (
+              <>
+                <span className="modal-badge">Тариф</span>
+                <h3 className="modal-title">{selectedPlan.name}</h3>
+                <div className="modal-price">{selectedPlan.price.split(" ").slice(0,2).join(" ")} <span>{selectedPlan.price.split(" ").slice(2).join(" ")}</span></div>
+                <p className="modal-desc">{selectedPlan.desc}</p>
+                <form className="modal-form" onSubmit={handleOrderSubmit}>
+                  <input
+                    className="modal-input"
+                    type="text"
+                    placeholder="Ваше имя"
+                    required
+                    value={orderForm.name}
+                    onChange={e => setOrderForm(p => ({ ...p, name: e.target.value }))}
+                  />
+                  <input
+                    className="modal-input"
+                    type="tel"
+                    placeholder="Номер телефона"
+                    required
+                    value={orderForm.phone}
+                    onChange={e => setOrderForm(p => ({ ...p, phone: e.target.value }))}
+                  />
+                  <input
+                    className="modal-input"
+                    type="email"
+                    placeholder="Email (необязательно)"
+                    value={orderForm.email}
+                    onChange={e => setOrderForm(p => ({ ...p, email: e.target.value }))}
+                  />
+                  <button className="modal-submit" type="submit" disabled={orderLoading}>
+                    {orderLoading ? "Отправляем..." : "Оформить заявку"}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="modal-success">
+                <span className="success-icon">🎉</span>
+                <h3>Заявка принята!</h3>
+                <p>Мы свяжемся с вами в ближайшее время и обсудим все детали подключения тарифа <strong style={{color:"#d33682"}}>{selectedPlan.name}</strong>.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* МОДАЛКА КОМАНДЫ */}
+      {joinOpen && (
+        <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && closeJoin()}>
+          <div className="modal-box">
+            <button className="modal-close" onClick={closeJoin}>×</button>
+            {!joinSent ? (
+              <>
+                <span className="modal-badge">Карьера</span>
+                <h3 className="modal-title">Вступить в команду</h3>
+                <p className="modal-desc">Заполни форму — мы рассмотрим твою кандидатуру и свяжемся с тобой.</p>
+                <form className="modal-form" onSubmit={handleJoinSubmit}>
+                  <input
+                    className="modal-input"
+                    type="text"
+                    placeholder="Твоё имя"
+                    required
+                    value={joinForm.name}
+                    onChange={e => setJoinForm(p => ({ ...p, name: e.target.value }))}
+                  />
+                  <input
+                    className="modal-input"
+                    type="tel"
+                    placeholder="Номер телефона"
+                    required
+                    value={joinForm.phone}
+                    onChange={e => setJoinForm(p => ({ ...p, phone: e.target.value }))}
+                  />
+                  <input
+                    className="modal-input"
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={joinForm.email}
+                    onChange={e => setJoinForm(p => ({ ...p, email: e.target.value }))}
+                  />
+                  <select
+                    className="modal-select"
+                    required
+                    value={joinForm.role}
+                    onChange={e => setJoinForm(p => ({ ...p, role: e.target.value }))}
+                  >
+                    <option value="" disabled>Выбери вакансию</option>
+                    <option>Веб-разработчик</option>
+                    <option>Специалист по рекламе</option>
+                    <option>DevOps / Системный администратор</option>
+                    <option>Менеджер по продажам</option>
+                    <option>Другое</option>
+                  </select>
+                  <textarea
+                    className="modal-textarea"
+                    placeholder="Расскажи о себе (опыт, стек, ссылки на работы)"
+                    value={joinForm.message}
+                    onChange={e => setJoinForm(p => ({ ...p, message: e.target.value }))}
+                  />
+                  <button className="modal-submit" type="submit" disabled={joinLoading}>
+                    {joinLoading ? "Отправляем..." : "Отправить анкету"}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="modal-success">
+                <span className="success-icon">🚀</span>
+                <h3>Анкета отправлена!</h3>
+                <p>Мы изучим твою кандидатуру и напишем на почту в течение 2–3 рабочих дней. Удачи!</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </>
   )
 }
