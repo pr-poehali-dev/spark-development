@@ -70,7 +70,7 @@ const PhotographyBanner: React.FC = () => {
     setJoinSent(true)
   }
 
-  const texts = ["РЕКЛАМУ.", "САЙТЫ.", "СЕРВЕРЫ.", "РЕШЕНИЯ."]
+  const texts = ["РЕКЛАМУ.", "САЙТЫ.", "СЕРВЕРЫ.", "YOUTUBE.", "ВСЁ ДЛЯ ВАС."]
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 40 : 100
@@ -1460,7 +1460,7 @@ const PhotographyBanner: React.FC = () => {
                 <span className="text tracking-tighter">{currentText}</span>
               </h1>
               <p className="tracking-widest">
-                Реклама, сайты, серверы и всё для вашего бизнеса в сети — под ключ, быстро и с гарантией результата
+                Рекламируем сайты, серверы, YouTube-каналы и многое другое — под ключ, быстро и с гарантией результата
               </p>
               <a href="#cta" className="book-link">
                 <span className="linktext tracking-tighter text-3xl">Получить предложение</span>
