@@ -820,6 +820,369 @@ const PhotographyBanner: React.FC = () => {
             max-width: 300px;
           }
         }
+
+        /* ===== ТАРИФЫ ===== */
+        .pricing-section {
+          padding: 100px 30px;
+          background-color: #002b36;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .pricing-section::before {
+          content: "";
+          border-radius: 197.5px 0px;
+          opacity: 0.25;
+          background: #cb4b16;
+          filter: blur(140px);
+          height: 50%;
+          width: 40%;
+          position: absolute;
+          top: 10%;
+          right: -10%;
+          z-index: 0;
+        }
+
+        .pricing-header {
+          text-align: center;
+          margin-bottom: 70px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .pricing-header h2 {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: clamp(50px, 8vw, 100px);
+          line-height: 0.9;
+          text-transform: uppercase;
+          margin: 0 0 20px;
+        }
+
+        .pricing-header h2 .highlight { color: #d33682; }
+
+        .pricing-header p {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 18px;
+          max-width: 500px;
+          margin: 0 auto;
+          line-height: 1.7;
+        }
+
+        .pricing-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          max-width: 1200px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+
+        .pricing-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid #333;
+          border-radius: 24px;
+          padding: 45px 35px;
+          display: flex;
+          flex-direction: column;
+          transition: transform 0.3s ease, border-color 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .pricing-card:hover {
+          transform: translateY(-8px);
+          border-color: #d33682;
+        }
+
+        .pricing-card.popular {
+          border-color: #d33682;
+          background: rgba(211, 54, 130, 0.07);
+        }
+
+        .popular-badge {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background: #d33682;
+          color: #002b36;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          padding: 5px 14px;
+          border-radius: 20px;
+        }
+
+        .pricing-plan-name {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 13px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: #d33682;
+          margin: 0 0 15px;
+        }
+
+        .pricing-price {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: clamp(42px, 5vw, 60px);
+          color: #fff;
+          line-height: 1;
+          margin: 0 0 5px;
+        }
+
+        .pricing-price span {
+          font-size: 20px;
+          font-weight: 400;
+          color: #aaa;
+        }
+
+        .pricing-desc {
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          color: #aaa;
+          margin: 15px 0 30px;
+          line-height: 1.6;
+        }
+
+        .pricing-features {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 40px;
+          flex: 1;
+        }
+
+        .pricing-features li {
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          color: #ccc;
+          padding: 10px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .pricing-features li::before {
+          content: "✓";
+          color: #d33682;
+          font-weight: bold;
+          flex-shrink: 0;
+        }
+
+        .pricing-features li.disabled {
+          color: #555;
+        }
+
+        .pricing-features li.disabled::before {
+          content: "—";
+          color: #444;
+        }
+
+        .pricing-btn {
+          display: block;
+          text-align: center;
+          padding: 15px;
+          background: transparent;
+          border: 2px solid #d33682;
+          color: #d33682;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-radius: 50px;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .pricing-btn:hover,
+        .pricing-card.popular .pricing-btn {
+          background: #d33682;
+          color: #002b36;
+        }
+
+        .pricing-card.popular .pricing-btn:hover {
+          background: transparent;
+          color: #d33682;
+        }
+
+        @media screen and (max-width: 900px) {
+          .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+        }
+
+        /* ===== КОМАНДА ===== */
+        .join-section {
+          padding: 120px 30px;
+          background-color: #073642;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .join-section::before {
+          content: "";
+          border-radius: 197.5px 0px;
+          opacity: 0.35;
+          background: #d33682;
+          filter: blur(150px);
+          height: 60%;
+          width: 50%;
+          position: absolute;
+          bottom: -10%;
+          left: -10%;
+          z-index: 0;
+        }
+
+        .join-inner {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        .join-content h2 {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: clamp(48px, 7vw, 90px);
+          line-height: 0.9;
+          text-transform: uppercase;
+          margin: 0 0 25px;
+        }
+
+        .join-content h2 .highlight { color: #d33682; }
+
+        .join-content p {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 17px;
+          line-height: 1.8;
+          margin: 0 0 40px;
+          max-width: 450px;
+        }
+
+        .join-perks {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 45px;
+        }
+
+        .join-perks li {
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          color: #ccc;
+          padding: 12px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .join-perks li .perk-icon {
+          width: 34px;
+          height: 34px;
+          background: rgba(211,54,130,0.15);
+          border: 1px solid #d33682;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          flex-shrink: 0;
+        }
+
+        .join-btn {
+          display: inline-block;
+          padding: 18px 48px;
+          background: #d33682;
+          color: #002b36;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-radius: 50px;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+
+        .join-btn:hover {
+          background: transparent;
+          color: #d33682;
+          border: 2px solid #d33682;
+          padding: 16px 46px;
+        }
+
+        .join-roles {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .role-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid #333;
+          border-radius: 18px;
+          padding: 25px 30px;
+          transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+          border-color: #d33682;
+          transform: translateX(8px);
+        }
+
+        .role-card h4 {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 16px;
+          text-transform: uppercase;
+          margin: 0 0 8px;
+        }
+
+        .role-card p {
+          color: #888;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        .role-tag {
+          display: inline-block;
+          margin-top: 10px;
+          padding: 4px 12px;
+          background: rgba(211,54,130,0.15);
+          color: #d33682;
+          font-family: "Montserrat", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          border-radius: 20px;
+          letter-spacing: 1px;
+        }
+
+        @media screen and (max-width: 900px) {
+          .join-inner {
+            grid-template-columns: 1fr;
+            gap: 50px;
+          }
+          .pricing-section, .join-section {
+            padding: 70px 16px;
+          }
+        }
       `}</style>
 
       <div className="photography-banner">
@@ -1006,6 +1369,103 @@ const PhotographyBanner: React.FC = () => {
                       <p>Технический директор</p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ТАРИФЫ */}
+          <section className="pricing-section" id="pricing">
+            <div className="pricing-header">
+              <h2>Тарифы для <span className="highlight">каждого</span></h2>
+              <p>От первого сайта до полноценной digital-инфраструктуры — выбери свой уровень</p>
+            </div>
+            <div className="pricing-grid">
+              <div className="pricing-card">
+                <p className="pricing-plan-name">Новичок</p>
+                <div className="pricing-price">9 900 <span>₽/мес</span></div>
+                <p className="pricing-desc">Идеально для старта — всё необходимое, чтобы заявить о себе в интернете</p>
+                <ul className="pricing-features">
+                  <li>Лендинг под ключ (1 стр.)</li>
+                  <li>Базовая настройка рекламы</li>
+                  <li>Хостинг + домен</li>
+                  <li>SSL-сертификат</li>
+                  <li className="disabled">Сервер VPS</li>
+                  <li className="disabled">Приоритетная поддержка</li>
+                  <li className="disabled">Аналитика и отчёты</li>
+                </ul>
+                <a href="#" className="pricing-btn">Выбрать план</a>
+              </div>
+
+              <div className="pricing-card popular">
+                <span className="popular-badge">Хит продаж</span>
+                <p className="pricing-plan-name">Бизнес</p>
+                <div className="pricing-price">24 900 <span>₽/мес</span></div>
+                <p className="pricing-desc">Полный digital-пакет для активного роста: реклама, сайт и надёжный сервер</p>
+                <ul className="pricing-features">
+                  <li>Многостраничный сайт</li>
+                  <li>Реклама в Яндекс + ВКонтакте</li>
+                  <li>VPS-сервер (2 CPU / 4 ГБ RAM)</li>
+                  <li>SSL + CDN + резервные копии</li>
+                  <li>Поддержка 5 дней в неделю</li>
+                  <li>Ежемесячный отчёт по рекламе</li>
+                  <li className="disabled">Выделенный менеджер</li>
+                </ul>
+                <a href="#" className="pricing-btn">Выбрать план</a>
+              </div>
+
+              <div className="pricing-card">
+                <p className="pricing-plan-name">Профи</p>
+                <div className="pricing-price">59 900 <span>₽/мес</span></div>
+                <p className="pricing-desc">Максимальный уровень для компаний, которым важны скорость, масштаб и результат</p>
+                <ul className="pricing-features">
+                  <li>Неограниченное кол-во сайтов</li>
+                  <li>Полное ведение рекламы (все площадки)</li>
+                  <li>Выделенный сервер (8 CPU / 16 ГБ)</li>
+                  <li>DevOps-сопровождение</li>
+                  <li>Поддержка 24/7</li>
+                  <li>Детальная аналитика и A/B тесты</li>
+                  <li>Личный менеджер проекта</li>
+                </ul>
+                <a href="#" className="pricing-btn">Выбрать план</a>
+              </div>
+            </div>
+          </section>
+
+          {/* ВСТУПИТЬ В КОМАНДУ */}
+          <section className="join-section" id="join">
+            <div className="join-inner">
+              <div className="join-content">
+                <h2>Вступи в <span className="highlight">команду</span></h2>
+                <p>Мы постоянно растём и ищем талантливых людей — разработчиков, маркетологов, дизайнеров и менеджеров. Удалённо или в офисе.</p>
+                <ul className="join-perks">
+                  <li><span className="perk-icon">💸</span>Достойная зарплата и бонусы за результат</li>
+                  <li><span className="perk-icon">🌍</span>Удалённая работа из любой точки мира</li>
+                  <li><span className="perk-icon">🚀</span>Реальный карьерный рост внутри компании</li>
+                  <li><span className="perk-icon">🎓</span>Обучение за счёт компании</li>
+                </ul>
+                <a href="#" className="join-btn">Откликнуться на вакансию</a>
+              </div>
+              <div className="join-roles">
+                <div className="role-card">
+                  <h4>Веб-разработчик</h4>
+                  <p>Создаёшь сайты и веб-приложения. React, Vue или чистый HTML — нам важен результат.</p>
+                  <span className="role-tag">Удалённо</span>
+                </div>
+                <div className="role-card">
+                  <h4>Специалист по рекламе</h4>
+                  <p>Настраиваешь кампании в Яндекс Директ и ВКонтакте, умеешь работать с аналитикой.</p>
+                  <span className="role-tag">Удалённо</span>
+                </div>
+                <div className="role-card">
+                  <h4>DevOps / Системный администратор</h4>
+                  <p>Поднимаешь серверы, настраиваешь CI/CD, следишь за стабильностью инфраструктуры.</p>
+                  <span className="role-tag">Полная занятость</span>
+                </div>
+                <div className="role-card">
+                  <h4>Менеджер по продажам</h4>
+                  <p>Работаешь с входящими заявками, ведёшь клиентов и заключаешь сделки.</p>
+                  <span className="role-tag">Удалённо</span>
                 </div>
               </div>
             </div>
