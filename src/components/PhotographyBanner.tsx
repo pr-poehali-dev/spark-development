@@ -9,8 +9,8 @@ interface PricingPlan {
 
 interface OrderForm {
   name: string
-  phone: string
-  email: string
+  vk: string
+  ds: string
 }
 
 interface JoinForm {
@@ -28,7 +28,7 @@ const PhotographyBanner: React.FC = () => {
 
   // Модалка тарифа
   const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null)
-  const [orderForm, setOrderForm] = useState<OrderForm>({ name: "", phone: "", email: "" })
+  const [orderForm, setOrderForm] = useState<OrderForm>({ name: "", vk: "", ds: "" })
   const [orderSent, setOrderSent] = useState(false)
   const [orderLoading, setOrderLoading] = useState(false)
 
@@ -40,7 +40,7 @@ const PhotographyBanner: React.FC = () => {
 
   const openPlan = (plan: PricingPlan) => {
     setSelectedPlan(plan)
-    setOrderForm({ name: "", phone: "", email: "" })
+    setOrderForm({ name: "", vk: "", ds: "" })
     setOrderSent(false)
   }
 
@@ -1772,18 +1772,18 @@ const PhotographyBanner: React.FC = () => {
                   />
                   <input
                     className="modal-input"
-                    type="tel"
-                    placeholder="Номер телефона"
+                    type="text"
+                    placeholder="Ссылка ВКонтакте (vk.com/...)"
                     required
-                    value={orderForm.phone}
-                    onChange={e => setOrderForm(p => ({ ...p, phone: e.target.value }))}
+                    value={orderForm.vk}
+                    onChange={e => setOrderForm(p => ({ ...p, vk: e.target.value }))}
                   />
                   <input
                     className="modal-input"
-                    type="email"
-                    placeholder="Email (необязательно)"
-                    value={orderForm.email}
-                    onChange={e => setOrderForm(p => ({ ...p, email: e.target.value }))}
+                    type="text"
+                    placeholder="Discord (необязательно)"
+                    value={orderForm.ds}
+                    onChange={e => setOrderForm(p => ({ ...p, ds: e.target.value }))}
                   />
                   <button className="modal-submit" type="submit" disabled={orderLoading}>
                     {orderLoading ? "Отправляем..." : "Оформить заявку"}
