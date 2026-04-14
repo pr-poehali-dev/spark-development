@@ -6,10 +6,10 @@ const data = {
   twitterLink: "https://twitter.com/digitalhub",
   githubLink: "https://github.com/digitalhub",
   services: {
-    web: "/web-razrabotka",
-    mobile: "/mobilnye-prilozheniya",
-    design: "/ui-ux-dizajn",
-    marketing: "/digital-marketing",
+    web: "/razrabotka-sajtov",
+    mobile: "/reklama",
+    design: "/servery",
+    marketing: "/podderzhka",
   },
   about: {
     story: "/o-nas",
@@ -30,7 +30,7 @@ const data = {
   company: {
     name: "ДиджиталХаб",
     description:
-      "Создаём цифровые продукты, которые помогают бизнесу расти. Веб-разработка, мобильные приложения и дизайн под ключ.",
+      "Реклама, сайты, серверы и цифровые решения для вашего бизнеса. Всё под ключ — быстро, надёжно, с результатом.",
   },
 }
 
@@ -49,10 +49,10 @@ const aboutLinks = [
 ]
 
 const serviceLinks = [
-  { text: "Веб-разработка", href: data.services.web },
-  { text: "Мобильные приложения", href: data.services.mobile },
-  { text: "UI/UX Дизайн", href: data.services.design },
-  { text: "Digital-маркетинг", href: data.services.marketing },
+  { text: "Разработка сайтов", href: data.services.web },
+  { text: "Реклама в интернете", href: data.services.mobile },
+  { text: "Серверные решения", href: data.services.design },
+  { text: "Поддержка и сопровождение", href: data.services.marketing },
 ]
 
 const helpfulLinks = [

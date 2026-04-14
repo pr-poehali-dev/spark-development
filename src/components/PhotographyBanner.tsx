@@ -6,7 +6,7 @@ const PhotographyBanner: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
 
-  const texts = ["БИЗНЕС.", "БРЕНДЫ."]
+  const texts = ["РЕКЛАМУ.", "САЙТЫ.", "СЕРВЕРЫ.", "РЕШЕНИЯ."]
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 40 : 100
@@ -828,7 +828,7 @@ const PhotographyBanner: React.FC = () => {
             <div className="left-part">
               <h1>
                 <span className="d-flex">
-                  {["С", "О", "З", "Д", "А", "Ё", "М"].map((char, index) => (
+                  {["Д", "Е", "Л", "А", "Е", "М"].map((char, index) => (
                     <span key={index} className="char tracking-tighter" style={{ animationDelay: `${index * 0.08}s` }}>
                       {char === " " ? "\u00A0" : char}
                     </span>
@@ -837,10 +837,10 @@ const PhotographyBanner: React.FC = () => {
                 <span className="text tracking-tighter">{currentText}</span>
               </h1>
               <p className="tracking-widest">
-                Помогаем предпринимателям запускать цифровые продукты быстрее с помощью современных технологий
+                Реклама, сайты, серверы и всё для вашего бизнеса в сети — под ключ, быстро и с гарантией результата
               </p>
               <a href="#cta" className="book-link">
-                <span className="linktext tracking-tighter text-3xl">Начать проект</span>
+                <span className="linktext tracking-tighter text-3xl">Получить предложение</span>
                 <span className="arrow">
                   <span></span>
                 </span>
@@ -888,42 +888,42 @@ const PhotographyBanner: React.FC = () => {
           <section className="features-section">
             <div className="features-container">
               <div className="features-content">
-                <h2>Почему выбирают нас?</h2>
+                <h2>Наши <span className="highlight">услуги</span></h2>
               </div>
               <ul className="features-list">
                 <li className="feature-item">
                   <div className="feature-icon">01</div>
                   <div className="feature-text">
-                    <h3>Опытная команда</h3>
+                    <h3>Реклама в интернете</h3>
                     <p className="font-light tracking-wider">
-                      Более 10 лет опыта в разработке цифровых продуктов для бизнеса любого масштаба
+                      Контекстная и таргетированная реклама в Яндексе, ВКонтакте и других площадках — приводим клиентов
                     </p>
                   </div>
                 </li>
                 <li className="feature-item">
                   <div className="feature-icon">02</div>
                   <div className="feature-text">
-                    <h3>Современные технологии</h3>
+                    <h3>Разработка сайтов</h3>
                     <p className="tracking-wider">
-                      Используем передовые инструменты и фреймворки для создания быстрых и надёжных решений
+                      Лендинги, корпоративные сайты, интернет-магазины — любой сложности, под ключ и в срок
                     </p>
                   </div>
                 </li>
                 <li className="feature-item">
                   <div className="feature-icon">03</div>
                   <div className="feature-text">
-                    <h3>Индивидуальный подход</h3>
+                    <h3>Серверные решения</h3>
                     <p className="tracking-wider">
-                      Каждый проект уникален — мы адаптируем решения под ваши конкретные задачи и цели
+                      Аренда и настройка серверов, хостинг, VPS/VDS — надёжная инфраструктура для вашего бизнеса
                     </p>
                   </div>
                 </li>
                 <li className="feature-item">
                   <div className="feature-icon">04</div>
                   <div className="feature-text">
-                    <h3>Поддержка 24/7</h3>
+                    <h3>Поддержка и сопровождение</h3>
                     <p className="tracking-wider">
-                      Обеспечиваем техническую поддержку и сопровождение на всех этапах работы
+                      Берём на себя обслуживание, обновления и техническую поддержку — вы занимаетесь бизнесом
                     </p>
                   </div>
                 </li>
@@ -933,77 +933,77 @@ const PhotographyBanner: React.FC = () => {
 
           <section className="testimonials-section">
             <div className="testimonials-container">
-              <h2 className="testimonials-title">Отзывы клиентов</h2>
+              <h2 className="testimonials-title">Нам доверяют</h2>
               <div className="testimonials-marquee">
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "Команда полностью изменила наш подход к цифровому присутствию. Результаты превзошли все ожидания."
+                    "Запустили рекламу в Яндексе — за первый месяц получили в 3 раза больше заявок. Ребята знают своё дело!"
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">АС</div>
                     <div className="author-info">
                       <h4>Алексей Смирнов</h4>
-                      <p>Директор по развитию</p>
+                      <p>Владелец интернет-магазина</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "Профессиональный подход и внимание к деталям. Запустили проект в рекордные сроки без потери качества."
+                    "Сделали нам сайт под ключ за 2 недели. Красиво, быстро, всё работает — клиенты оценили сразу."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">МК</div>
                     <div className="author-info">
                       <h4>Мария Козлова</h4>
-                      <p>Основатель стартапа</p>
+                      <p>Руководитель салона красоты</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "От идеи до запуска — всё прошло гладко. Рекомендую всем, кто ценит качество и скорость."
+                    "Подняли наш сервер, настроили всё под задачи компании. Ни одного сбоя за полгода — впечатляет."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">ДВ</div>
                     <div className="author-info">
                       <h4>Дмитрий Волков</h4>
-                      <p>Предприниматель</p>
+                      <p>Технический директор</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "Команда полностью изменила наш подход к цифровому присутствию. Результаты превзошли все ожидания."
+                    "Запустили рекламу в Яндексе — за первый месяц получили в 3 раза больше заявок. Ребята знают своё дело!"
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">АС</div>
                     <div className="author-info">
                       <h4>Алексей Смирнов</h4>
-                      <p>Директор по развитию</p>
+                      <p>Владелец интернет-магазина</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "Профессиональный подход и внимание к деталям. Запустили проект в рекордные сроки без потери качества."
+                    "Сделали нам сайт под ключ за 2 недели. Красиво, быстро, всё работает — клиенты оценили сразу."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">МК</div>
                     <div className="author-info">
                       <h4>Мария Козлова</h4>
-                      <p>Основатель стартапа</p>
+                      <p>Руководитель салона красоты</p>
                     </div>
                   </div>
                 </div>
                 <div className="testimonial-card">
                   <p className="testimonial-quote">
-                    "От идеи до запуска — всё прошло гладко. Рекомендую всем, кто ценит качество и скорость."
+                    "Подняли наш сервер, настроили всё под задачи компании. Ни одного сбоя за полгода — впечатляет."
                   </p>
                   <div className="testimonial-author">
                     <div className="author-avatar">ДВ</div>
                     <div className="author-info">
                       <h4>Дмитрий Волков</h4>
-                      <p>Предприниматель</p>
+                      <p>Технический директор</p>
                     </div>
                   </div>
                 </div>
@@ -1013,16 +1013,16 @@ const PhotographyBanner: React.FC = () => {
 
           <section className="cta-section" id="cta">
             <div className="cta-container">
-              <h2 className="cta-title text-center">Готовы начать?</h2>
+              <h2 className="cta-title text-center">Хватит ждать!</h2>
               <p className="cta-subtitle">
-                Присоединяйтесь к сотням компаний, которые уже трансформировали свой бизнес. Ваш путь к успеху начинается здесь.
+                Каждый день без рекламы и сильного сайта — это упущенные клиенты. Свяжитесь с нами и получите бесплатный аудит вашего онлайн-присутствия.
               </p>
               <div className="cta-buttons">
                 <a href="#" className="cta-button">
-                  Обсудить проект
+                  Получить бесплатный аудит
                 </a>
                 <a href="#" className="cta-button secondary">
-                  Посмотреть кейсы
+                  Наши услуги и цены
                 </a>
               </div>
             </div>
