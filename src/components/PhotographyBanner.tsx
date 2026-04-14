@@ -1738,10 +1738,10 @@ const PhotographyBanner: React.FC = () => {
                 Каждый день без рекламы и сильного сайта — это упущенные клиенты. Свяжитесь с нами и получите бесплатный аудит вашего онлайн-присутствия.
               </p>
               <div className="cta-buttons">
-                <a href="#" className="cta-button">
+                <a href="https://t.me/digitalhub_support" target="_blank" rel="noopener noreferrer" className="cta-button">
                   Получить бесплатный аудит
                 </a>
-                <a href="#" className="cta-button secondary">
+                <a href="#pricing" className="cta-button secondary">
                   Наши услуги и цены
                 </a>
               </div>
