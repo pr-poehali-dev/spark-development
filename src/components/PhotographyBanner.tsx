@@ -1643,7 +1643,7 @@ const PhotographyBanner: React.FC = () => {
             <div className="pricing-grid">
               <div className="pricing-card">
                 <p className="pricing-plan-name">Новичок</p>
-                <div className="pricing-price">9 900 <span>₽/мес</span></div>
+                <div className="pricing-price">400 <span>₽/мес</span></div>
                 <p className="pricing-desc">Идеально для старта — всё необходимое, чтобы заявить о себе в интернете</p>
                 <ul className="pricing-features">
                   <li>Лендинг под ключ (1 стр.)</li>
@@ -1654,13 +1654,13 @@ const PhotographyBanner: React.FC = () => {
                   <li className="disabled">Приоритетная поддержка</li>
                   <li className="disabled">Аналитика и отчёты</li>
                 </ul>
-                <button className="pricing-btn" onClick={() => openPlan({ name: "Новичок", price: "9 900 ₽/мес", desc: "Идеально для старта — лендинг, реклама, хостинг и домен." })}>Выбрать план</button>
+                <button className="pricing-btn" onClick={() => openPlan({ name: "Новичок", price: "400 ₽/мес", desc: "Идеально для старта — лендинг, реклама, хостинг и домен." })}>Выбрать план</button>
               </div>
 
               <div className="pricing-card popular">
                 <span className="popular-badge">Хит продаж</span>
                 <p className="pricing-plan-name">Бизнес</p>
-                <div className="pricing-price">24 900 <span>₽/мес</span></div>
+                <div className="pricing-price">1 500 <span>₽/мес</span></div>
                 <p className="pricing-desc">Полный digital-пакет для активного роста: реклама, сайт и надёжный сервер</p>
                 <ul className="pricing-features">
                   <li>Многостраничный сайт</li>
@@ -1671,12 +1671,12 @@ const PhotographyBanner: React.FC = () => {
                   <li>Ежемесячный отчёт по рекламе</li>
                   <li className="disabled">Выделенный менеджер</li>
                 </ul>
-                <button className="pricing-btn" onClick={() => openPlan({ name: "Бизнес", price: "24 900 ₽/мес", desc: "Полный digital-пакет: сайт, реклама, VPS-сервер и поддержка 5 дней в неделю." })}>Выбрать план</button>
+                <button className="pricing-btn" onClick={() => openPlan({ name: "Бизнес", price: "1 500 ₽/мес", desc: "Полный digital-пакет: сайт, реклама, VPS-сервер и поддержка 5 дней в неделю." })}>Выбрать план</button>
               </div>
 
               <div className="pricing-card">
                 <p className="pricing-plan-name">Профи</p>
-                <div className="pricing-price">59 900 <span>₽/мес</span></div>
+                <div className="pricing-price">3 000 <span>₽/мес</span></div>
                 <p className="pricing-desc">Максимальный уровень для компаний, которым важны скорость, масштаб и результат</p>
                 <ul className="pricing-features">
                   <li>Неограниченное кол-во сайтов</li>
@@ -1687,7 +1687,7 @@ const PhotographyBanner: React.FC = () => {
                   <li>Детальная аналитика и A/B тесты</li>
                   <li>Личный менеджер проекта</li>
                 </ul>
-                <button className="pricing-btn" onClick={() => openPlan({ name: "Профи", price: "59 900 ₽/мес", desc: "Максимальный уровень: выделенный сервер, все площадки рекламы и личный менеджер." })}>Выбрать план</button>
+                <button className="pricing-btn" onClick={() => openPlan({ name: "Профи", price: "3 000 ₽/мес", desc: "Максимальный уровень: выделенный сервер, все площадки рекламы и личный менеджер." })}>Выбрать план</button>
               </div>
             </div>
           </section>
